@@ -125,10 +125,16 @@ final class AICoachService {
     private(set) var isLoading = false
 
     var isConfigured: Bool {
-        guard let key = KeychainService.retrieve(key: KeychainService.anthropicAPIKey) else {
-            return false
+        return !resolvedAPIKey.isEmpty
+    }
+
+    /// Resolves the API key: embedded Secrets key first, then Keychain fallback.
+    private var resolvedAPIKey: String {
+        let embeddedKey = Secrets.anthropicAPIKey
+        if !embeddedKey.isEmpty && embeddedKey != "YOUR_ANTHROPIC_API_KEY_HERE" {
+            return embeddedKey
         }
-        return !key.isEmpty
+        return KeychainService.retrieve(key: KeychainService.anthropicAPIKey) ?? ""
     }
 
     // MARK: - Initialization
@@ -392,7 +398,8 @@ final class AICoachService {
         isLoading = true
         defer { isLoading = false }
 
-        guard let apiKey = KeychainService.retrieve(key: KeychainService.anthropicAPIKey), !apiKey.isEmpty else {
+        let apiKey = resolvedAPIKey
+        guard !apiKey.isEmpty else {
             throw AICoachError.notConfigured
         }
 
@@ -430,7 +437,8 @@ final class AICoachService {
         isLoading = true
         defer { isLoading = false }
 
-        guard let apiKey = KeychainService.retrieve(key: KeychainService.anthropicAPIKey), !apiKey.isEmpty else {
+        let apiKey = resolvedAPIKey
+        guard !apiKey.isEmpty else {
             throw AICoachError.notConfigured
         }
 

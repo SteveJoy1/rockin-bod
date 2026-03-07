@@ -50,6 +50,7 @@
 		F1EAEED2158986462433C0F6 /* MetricCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D06D59822A7BB61F6929BF /* MetricCardView.swift */; };
 		F4B465EE7B663F39979B16C3 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A526BF8E2A3FB6BC89E8BB2 /* UserProfile.swift */; };
 		F6E625C790DE7AA4EE613F23 /* ProgressPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3F973393467212264F9759 /* ProgressPhoto.swift */; };
+		A1B2C3D4E5F60718192A3B4C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2F3A4B5C60718293A4B5D /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		E531F3EE2F6DFD06CB4F2BDD /* CronometerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronometerService.swift; sourceTree = "<group>"; };
 		EC22BEEA3A65D5207EC6AFB3 /* IntegrationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationSettingsView.swift; sourceTree = "<group>"; };
 		F0BA3B7CE50C71E55A91F7C6 /* RockinBod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockinBod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1E2F3A4B5C60718293A4B5D /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F5AA7DCCF2AB076F3620539E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 			children = (
 				F5AA7DCCF2AB076F3620539E /* Constants.swift */,
 				33741E102D25591D877E700F /* Extensions.swift */,
+				D1E2F3A4B5C60718293A4B5D /* Secrets.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				3AA14EEC353CE0F31D037F88 /* ProgressTrackingView.swift in Sources */,
 				1D01647F78BDDAFDEEE895D6 /* RenphoService.swift in Sources */,
 				01E14696401C5ABB1E0C1420 /* RockinBodApp.swift in Sources */,
+				A1B2C3D4E5F60718192A3B4C /* Secrets.swift in Sources */,
 				4A81B7698C6B5C0CC7BF5CBC /* SettingsView.swift in Sources */,
 				EA2098E072832062FBBBA5A5 /* TrendChartView.swift in Sources */,
 				F4B465EE7B663F39979B16C3 /* UserProfile.swift in Sources */,

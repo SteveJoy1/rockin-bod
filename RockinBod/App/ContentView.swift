@@ -35,6 +35,8 @@ struct MainTabView: View {
     let aiCoachService: AICoachService
     let dataService: DataAggregationService
 
+    @State private var showSettings = false
+
     var body: some View {
         TabView {
             NavigationStack {
@@ -42,6 +44,11 @@ struct MainTabView: View {
                     healthKitService: healthKitService,
                     dataService: dataService
                 )
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        settingsButton
+                    }
+                }
             }
             .tabItem {
                 Label("Dashboard", systemImage: "chart.bar.fill")
@@ -49,6 +56,11 @@ struct MainTabView: View {
 
             NavigationStack {
                 NutritionView()
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            settingsButton
+                        }
+                    }
             }
             .tabItem {
                 Label("Nutrition", systemImage: "fork.knife")
@@ -56,6 +68,11 @@ struct MainTabView: View {
 
             NavigationStack {
                 WorkoutsView()
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            settingsButton
+                        }
+                    }
             }
             .tabItem {
                 Label("Workouts", systemImage: "dumbbell.fill")
@@ -63,6 +80,11 @@ struct MainTabView: View {
 
             NavigationStack {
                 ProgressTrackingView()
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            settingsButton
+                        }
+                    }
             }
             .tabItem {
                 Label("Progress", systemImage: "camera.fill")
@@ -73,16 +95,39 @@ struct MainTabView: View {
                     aiCoachService: aiCoachService,
                     dataService: dataService
                 )
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        settingsButton
+                    }
+                }
             }
             .tabItem {
                 Label("Coach", systemImage: "brain.head.profile")
             }
         }
         .tint(.accentColor)
+        .sheet(isPresented: $showSettings) {
+            SettingsView(
+                healthKitService: healthKitService,
+                hevyService: hevyService,
+                cronometerService: cronometerService,
+                renphoService: renphoService,
+                aiCoachService: aiCoachService,
+                dataService: dataService
+            )
+        }
         .task {
             if HealthKitService.isAvailable && !healthKitService.isAuthorized {
                 try? await healthKitService.requestAuthorization()
             }
+        }
+    }
+
+    private var settingsButton: some View {
+        Button {
+            showSettings = true
+        } label: {
+            Image(systemName: "gearshape")
         }
     }
 }

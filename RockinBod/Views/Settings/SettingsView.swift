@@ -9,6 +9,7 @@ struct SettingsView: View {
     var hevyService: HevyService
     var cronometerService: CronometerService
     var renphoService: RenphoService
+    var aiCoachService: AICoachService
     var dataService: DataAggregationService
 
     // MARK: - Profile Form State
@@ -32,6 +33,13 @@ struct SettingsView: View {
     @State private var showClearDataAlert = false
     @State private var profileSaved = false
     @State private var hasLoadedProfile = false
+
+    // MARK: - Units & Notifications State
+
+    @AppStorage("useMetricUnits") private var useMetricUnits = true
+    @AppStorage("notificationsEnabled") private var notificationsEnabled = false
+    @AppStorage("dailyReminderEnabled") private var dailyReminderEnabled = true
+    @AppStorage("weeklyReviewReminder") private var weeklyReviewReminder = true
 
     private var userProfile: UserProfile? { userProfiles.first }
 
@@ -104,6 +112,8 @@ struct SettingsView: View {
         Form {
             profileSection
             macroTargetsSection
+            unitsSection
+            notificationsSection
             integrationsSection
             dataManagementSection
             aboutSection
@@ -194,6 +204,30 @@ struct SettingsView: View {
         }
     }
 
+    // MARK: - Units Section
+
+    private var unitsSection: some View {
+        Section("Units") {
+            Picker("Weight & Body", selection: $useMetricUnits) {
+                Text("Metric (kg, cm)").tag(true)
+                Text("Imperial (lbs, in)").tag(false)
+            }
+        }
+    }
+
+    // MARK: - Notifications Section
+
+    private var notificationsSection: some View {
+        Section("Notifications") {
+            Toggle("Enable Notifications", isOn: $notificationsEnabled)
+
+            if notificationsEnabled {
+                Toggle("Daily Logging Reminder", isOn: $dailyReminderEnabled)
+                Toggle("Weekly Review Reminder", isOn: $weeklyReviewReminder)
+            }
+        }
+    }
+
     // MARK: - Integrations Section
 
     private var integrationsSection: some View {
@@ -223,7 +257,7 @@ struct SettingsView: View {
                 name: "Hevy",
                 icon: "dumbbell.fill",
                 color: .blue,
-                isConnected: hevyService.isConfigured
+                isConnected: healthKitService.isAuthorized || hevyService.isConfigured
             )
             integrationStatusRow(
                 name: "Cronometer",
@@ -241,7 +275,7 @@ struct SettingsView: View {
                 name: "AI Coach (Claude)",
                 icon: "brain",
                 color: .green,
-                isConnected: KeychainService.retrieve(key: KeychainService.anthropicAPIKey) != nil
+                isConnected: aiCoachService.isConfigured
             )
         }
     }
@@ -504,6 +538,7 @@ struct SettingsView: View {
         hevyService: HevyService(),
         cronometerService: CronometerService(),
         renphoService: RenphoService(healthKitService: healthKit),
+        aiCoachService: AICoachService(),
         dataService: DataAggregationService(healthKitService: healthKit)
     )
     .modelContainer(for: [

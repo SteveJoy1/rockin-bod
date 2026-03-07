@@ -25,21 +25,10 @@ struct IntegrationSettingsView: View {
     @State private var cronometerImportResult: Int?
     @State private var isImportingCronometer = false
 
-    // MARK: - AI Coach State
-
-    @State private var claudeAPIKey: String = ""
-    @State private var isTestingConnection = false
-    @State private var connectionTestResult: ConnectionTestResult?
-
     // MARK: - General State
 
     @State private var errorMessage: String?
     @State private var showError = false
-
-    enum ConnectionTestResult {
-        case success
-        case failure(String)
-    }
 
     // MARK: - Body
 
@@ -135,83 +124,123 @@ struct IntegrationSettingsView: View {
                 Label("Hevy", systemImage: "dumbbell.fill")
                     .foregroundStyle(.blue)
                 Spacer()
-                statusBadge(isConnected: hevyService.isConfigured)
+                statusBadge(isConnected: healthKitService.isAuthorized || hevyService.isConfigured)
             }
 
-            SecureField("Hevy API Key", text: $hevyAPIKey)
-                .textContentType(.password)
-                .autocorrectionDisabled()
-                .textInputAutocapitalization(.never)
-
-            HStack(spacing: 12) {
-                Button {
-                    saveHevyKey()
-                } label: {
-                    HStack {
-                        Image(systemName: "key.fill")
-                        Text("Save Key")
-                    }
-                    .font(.subheadline)
+            // Primary: HealthKit sync (recommended)
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 8) {
+                    Image(systemName: "heart.fill")
+                        .foregroundStyle(.red)
+                    Text("Apple Health Sync (Recommended)")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.blue)
-                .disabled(hevyAPIKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
 
-                if hevyService.isConfigured {
-                    Button(role: .destructive) {
-                        removeHevyKey()
+                Text("Hevy automatically syncs your workouts to Apple Health. RockinBod reads this data through Apple Health \u{2014} no setup required.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                if healthKitService.isAuthorized {
+                    HStack(spacing: 4) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(.green)
+                        Text("Apple Health connected \u{2014} Hevy workouts sync automatically")
+                            .font(.caption)
+                            .foregroundStyle(.green)
+                    }
+                } else {
+                    HStack(spacing: 4) {
+                        Image(systemName: "exclamationmark.circle")
+                            .foregroundStyle(.orange)
+                        Text("Connect Apple Health above to enable automatic sync")
+                            .font(.caption)
+                            .foregroundStyle(.orange)
+                    }
+                }
+            }
+
+            // Optional: API key for detailed data
+            DisclosureGroup("Advanced: API Key for Detailed Data") {
+                Text("The Hevy API provides detailed set-by-set data (reps, weight, RPE) that Apple Health doesn't include. Requires a Hevy Pro subscription.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                SecureField("Hevy API Key", text: $hevyAPIKey)
+                    .textContentType(.password)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+
+                HStack(spacing: 12) {
+                    Button {
+                        saveHevyKey()
                     } label: {
                         HStack {
-                            Image(systemName: "trash")
-                            Text("Remove")
+                            Image(systemName: "key.fill")
+                            Text("Save Key")
                         }
                         .font(.subheadline)
                     }
-                    .buttonStyle(.bordered)
-                }
-            }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.blue)
+                    .disabled(hevyAPIKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
 
-            if hevyService.isConfigured {
-                Divider()
-
-                DatePicker(
-                    "Import since",
-                    selection: $hevyImportSinceDate,
-                    in: ...Date(),
-                    displayedComponents: .date
-                )
-
-                Button {
-                    Task { await importHevyWorkouts() }
-                } label: {
-                    HStack {
-                        if isImportingHevy {
-                            ProgressView()
-                                .controlSize(.small)
-                        } else {
-                            Image(systemName: "square.and.arrow.down")
+                    if hevyService.isConfigured {
+                        Button(role: .destructive) {
+                            removeHevyKey()
+                        } label: {
+                            HStack {
+                                Image(systemName: "trash")
+                                Text("Remove")
+                            }
+                            .font(.subheadline)
                         }
-                        Text(isImportingHevy ? "Importing..." : "Import Workouts")
+                        .buttonStyle(.bordered)
                     }
-                    .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.bordered)
-                .disabled(isImportingHevy)
 
-                if let result = hevyImportResult {
-                    HStack {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.green)
-                        Text("\(result) workout\(result == 1 ? "" : "s") imported")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                if hevyService.isConfigured {
+                    Divider()
+
+                    DatePicker(
+                        "Import since",
+                        selection: $hevyImportSinceDate,
+                        in: ...Date(),
+                        displayedComponents: .date
+                    )
+
+                    Button {
+                        Task { await importHevyWorkouts() }
+                    } label: {
+                        HStack {
+                            if isImportingHevy {
+                                ProgressView()
+                                    .controlSize(.small)
+                            } else {
+                                Image(systemName: "square.and.arrow.down")
+                            }
+                            Text(isImportingHevy ? "Importing..." : "Import Workouts")
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(isImportingHevy)
+
+                    if let result = hevyImportResult {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(.green)
+                            Text("\(result) workout\(result == 1 ? "" : "s") imported")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
             }
         } header: {
             Text("Hevy")
         } footer: {
-            Text("Hevy tracks your strength training workouts with detailed exercise and set data. Get your API key from the Hevy app settings.")
+            Text("Hevy syncs workout data through Apple Health automatically. For detailed set/rep data, you can optionally connect with an API key (requires Hevy Pro).")
         }
     }
 
@@ -326,99 +355,18 @@ struct IntegrationSettingsView: View {
                 Label("AI Coach (Claude)", systemImage: "brain")
                     .foregroundStyle(.green)
                 Spacer()
-                statusBadge(
-                    isConnected: KeychainService.retrieve(key: KeychainService.anthropicAPIKey) != nil
-                )
+                statusBadge(isConnected: true)
             }
 
-            SecureField("Claude API Key", text: $claudeAPIKey)
-                .textContentType(.password)
-                .autocorrectionDisabled()
-                .textInputAutocapitalization(.never)
-
-            HStack(spacing: 12) {
-                Button {
-                    saveClaudeKey()
-                } label: {
-                    HStack {
-                        Image(systemName: "key.fill")
-                        Text("Save Key")
-                    }
-                    .font(.subheadline)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.green)
-                .disabled(claudeAPIKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-
-                if KeychainService.retrieve(key: KeychainService.anthropicAPIKey) != nil {
-                    Button(role: .destructive) {
-                        removeClaudeKey()
-                    } label: {
-                        HStack {
-                            Image(systemName: "trash")
-                            Text("Remove")
-                        }
-                        .font(.subheadline)
-                    }
-                    .buttonStyle(.bordered)
-                }
-            }
-
-            Link(destination: URL(string: "https://console.anthropic.com/settings/keys")!) {
-                HStack {
-                    Image(systemName: "arrow.up.right.square")
-                    Text("Get an API Key")
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
-
-            Button {
-                Task { await testClaudeConnection() }
-            } label: {
-                HStack {
-                    if isTestingConnection {
-                        ProgressView()
-                            .controlSize(.small)
-                    } else {
-                        Image(systemName: "antenna.radiowaves.left.and.right")
-                    }
-                    Text(isTestingConnection ? "Testing..." : "Test Connection")
-                }
-                .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .disabled(
-                isTestingConnection
-                || KeychainService.retrieve(key: KeychainService.anthropicAPIKey) == nil
-            )
-
-            if let testResult = connectionTestResult {
-                switch testResult {
-                case .success:
-                    HStack {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.green)
-                        Text("Connection successful")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                case .failure(let message):
-                    HStack {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.red)
-                        Text(message)
-                            .font(.caption)
-                            .foregroundStyle(.red)
-                    }
-                }
+            VStack(alignment: .leading, spacing: 8) {
+                Text("AI coaching is built into RockinBod. The AI Coach can analyze your progress photos, review your weekly data, check your exercise form, and provide personalized coaching advice.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
         } header: {
             Text("AI Coach")
         } footer: {
-            Text("The AI Coach uses Claude to analyze your progress photos, review your weekly data, check exercise form, and provide personalized coaching advice.")
+            Text("Powered by Claude. No setup required.")
         }
     }
 
@@ -448,9 +396,6 @@ struct IntegrationSettingsView: View {
         if hevyService.isConfigured {
             hevyAPIKey = ""
         }
-        if KeychainService.retrieve(key: KeychainService.anthropicAPIKey) != nil {
-            claudeAPIKey = ""
-        }
     }
 
     private func saveHevyKey() {
@@ -471,28 +416,6 @@ struct IntegrationSettingsView: View {
             hevyImportResult = nil
         } catch {
             showError("Failed to remove Hevy API key: \(error.localizedDescription)")
-        }
-    }
-
-    private func saveClaudeKey() {
-        let trimmed = claudeAPIKey.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        do {
-            try KeychainService.save(key: KeychainService.anthropicAPIKey, value: trimmed)
-            claudeAPIKey = ""
-            connectionTestResult = nil
-        } catch {
-            showError("Failed to save Claude API key: \(error.localizedDescription)")
-        }
-    }
-
-    private func removeClaudeKey() {
-        do {
-            try KeychainService.delete(key: KeychainService.anthropicAPIKey)
-            claudeAPIKey = ""
-            connectionTestResult = nil
-        } catch {
-            showError("Failed to remove Claude API key: \(error.localizedDescription)")
         }
     }
 
@@ -549,60 +472,6 @@ struct IntegrationSettingsView: View {
         }
     }
 
-    // MARK: - Claude Connection Test
-
-    private func testClaudeConnection() async {
-        isTestingConnection = true
-        connectionTestResult = nil
-        defer { isTestingConnection = false }
-
-        guard let apiKey = KeychainService.retrieve(key: KeychainService.anthropicAPIKey),
-              !apiKey.isEmpty else {
-            connectionTestResult = .failure("No API key configured")
-            return
-        }
-
-        // Send a minimal request to the Claude API to verify the key works
-        guard let url = URL(string: "https://api.anthropic.com/v1/messages") else {
-            connectionTestResult = .failure("Invalid API URL")
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.setValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
-        request.setValue("application/json", forHTTPHeaderField: "content-type")
-        request.timeoutInterval = 30
-
-        let body: [String: Any] = [
-            "model": "claude-sonnet-4-20250514",
-            "max_tokens": 16,
-            "messages": [
-                ["role": "user", "content": "Respond with only the word: OK"],
-            ],
-        ]
-
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: body)
-            let (_, response) = try await URLSession.shared.data(for: request)
-
-            guard let httpResponse = response as? HTTPURLResponse else {
-                connectionTestResult = .failure("Invalid response")
-                return
-            }
-
-            if (200...299).contains(httpResponse.statusCode) {
-                connectionTestResult = .success
-            } else if httpResponse.statusCode == 401 {
-                connectionTestResult = .failure("Invalid API key (HTTP 401)")
-            } else {
-                connectionTestResult = .failure("API error (HTTP \(httpResponse.statusCode))")
-            }
-        } catch {
-            connectionTestResult = .failure("Connection failed: \(error.localizedDescription)")
-        }
-    }
 }
 
 #Preview {

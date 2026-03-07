@@ -33,6 +33,7 @@ Carthage/Build/
 # Secrets
 *.secret
 .env
+**/Secrets.swift
 
 # OS
 .DS_Store

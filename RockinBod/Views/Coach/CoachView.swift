@@ -202,7 +202,7 @@ struct CoachView: View {
                 .disabled(!aiCoachService.isConfigured)
 
                 if !aiCoachService.isConfigured {
-                    Label("Configure your API key in Settings to use AI features.", systemImage: "exclamationmark.triangle")
+                    Label("AI Coach is temporarily unavailable.", systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
@@ -252,7 +252,7 @@ struct CoachView: View {
                 .disabled(!aiCoachService.isConfigured)
 
                 if !aiCoachService.isConfigured {
-                    Label("Configure your API key in Settings to use AI features.", systemImage: "exclamationmark.triangle")
+                    Label("AI Coach is temporarily unavailable.", systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
