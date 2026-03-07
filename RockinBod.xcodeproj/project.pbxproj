@@ -108,7 +108,7 @@
 		E422CCB58E612C8C49518052 /* HevyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HevyService.swift; sourceTree = "<group>"; };
 		E531F3EE2F6DFD06CB4F2BDD /* CronometerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronometerService.swift; sourceTree = "<group>"; };
 		EC22BEEA3A65D5207EC6AFB3 /* IntegrationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationSettingsView.swift; sourceTree = "<group>"; };
-		F0BA3B7CE50C71E55A91F7C6 /* RockinBod.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RockinBod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0BA3B7CE50C71E55A91F7C6 /* RockinBod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockinBod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AA7DCCF2AB076F3620539E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -454,13 +454,14 @@
 				CODE_SIGN_ENTITLEMENTS = RockinBod/RockinBod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W4L4G6JKTJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RockinBod/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod8374.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -475,7 +476,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod8374.tests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockinBod.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RockinBod";
@@ -490,13 +491,14 @@
 				CODE_SIGN_ENTITLEMENTS = RockinBod/RockinBod.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W4L4G6JKTJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RockinBod/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod8374.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -570,7 +572,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod8374.tests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockinBod.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RockinBod";
