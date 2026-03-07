@@ -1,0 +1,679 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01E14696401C5ABB1E0C1420 /* RockinBodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFCE389BB1AB2835403F06B /* RockinBodApp.swift */; };
+		03372AF8CCC77AF8631D507C /* DataAggregationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62F11577D51A1D54AE722 /* DataAggregationService.swift */; };
+		1459023EE7A9B3BC1F97C117 /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E775A5D9B0AB60C18CE4844 /* WorkoutsView.swift */; };
+		1C1DFCC077CED1EB8B6A7FE7 /* CoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA18C5939227EAD004BCE7 /* CoachView.swift */; };
+		1D01647F78BDDAFDEEE895D6 /* RenphoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D472341865A32435E7BC2772 /* RenphoService.swift */; };
+		1D89FBE8D20FE9E440B0AE61 /* ExerciseProgressChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EDEF2DFC27744F847C3AC2 /* ExerciseProgressChartView.swift */; };
+		28BBFB345D918797A6338487 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3ACBD897BC92B9A56DEAF /* ExerciseSet.swift */; };
+		2B36654E96A567C321430588 /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A85000FE3FDB38361EBED5 /* PhotoCaptureView.swift */; };
+		2CBBFEA73ED0E62C352838CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D183DF62365055FAB6D9122 /* Assets.xcassets */; };
+		3494760B6CA12B495EC2C81B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596BA00474749D4D22D889BB /* OnboardingView.swift */; };
+		3AA14EEC353CE0F31D037F88 /* ProgressTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688D7A59240C17A607E52EA /* ProgressTrackingView.swift */; };
+		3E5739BDCD132E59AABAE983 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADED2819025E845EE2696D /* WorkoutDetailView.swift */; };
+		3F240F59D6D17BA35B54BE5B /* CronometerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531F3EE2F6DFD06CB4F2BDD /* CronometerService.swift */; };
+		47A82643AC1FD8C06282729B /* MicronutrientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D732D612F04F90DA910FD097 /* MicronutrientListView.swift */; };
+		4A81B7698C6B5C0CC7BF5CBC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A9705CFAAD5F7CD727DCAA /* SettingsView.swift */; };
+		4B489568914E4C5C5531BD60 /* BodyMetricsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6973B014CF60229289D94473 /* BodyMetricsChartView.swift */; };
+		4E276BC0024F2DBF28219353 /* HevyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422CCB58E612C8C49518052 /* HevyService.swift */; };
+		4F99F3E02B40603CA818A73B /* FormCheckResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4314759C7A4515B666CF0E1A /* FormCheckResult.swift */; };
+		60D3B81322F594B083902EC2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741E102D25591D877E700F /* Extensions.swift */; };
+		65643F007861BEC60088825F /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED259A7F4E6CCAD2395221 /* HealthKitService.swift */; };
+		65FDFAE754B6CD0F331C8625 /* WeeklyReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA59297BD7BD48F0CAD5E0AA /* WeeklyReviewView.swift */; };
+		67A33AA4AEE6E0351E43B430 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA7DCCF2AB076F3620539E /* Constants.swift */; };
+		6BE09C526FE73FA8A9012C45 /* PhotoComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE97478BA2716E0DA5F88F /* PhotoComparisonView.swift */; };
+		708CC34F37E45EF9F5A49084 /* BodyMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7184DA67C570BC93C4CE4C5 /* BodyMeasurement.swift */; };
+		71D7F76A16C195C2078A55F1 /* NutritionEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1A22B220323BA195F70E0 /* NutritionEntry.swift */; };
+		772CF04B5D7636791E1F9AE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4C5B4B9E24D7DA5C56333 /* ContentView.swift */; };
+		7B53E3F859B1A5FBFC659643 /* WeeklyReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCAE7EF325F8873B07D182C /* WeeklyReport.swift */; };
+		8FB7C0220D2CF4E4C4432089 /* CoachMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C452C6B5306DFD6F6B55618 /* CoachMessage.swift */; };
+		A56E688848AF5EBFADF2D06B /* IntegrationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC22BEEA3A65D5207EC6AFB3 /* IntegrationSettingsView.swift */; };
+		AC42BA7F2CB5802A71BEE249 /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1533F030A4F6ED711ECB5D1F /* WorkoutSession.swift */; };
+		B0661CFFB8005AA514A386DB /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA3A4FF4A6B3FEB9435150 /* KeychainService.swift */; };
+		C1FD9E6C9DC014025FC03B3E /* FormCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AA7346026ADB609E9CAD20 /* FormCheckView.swift */; };
+		C8B8517D2808193D7F3AF30B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C05F4F20192D938B88CA989 /* DashboardView.swift */; };
+		D3B528F6CC14B0AEF4B5088F /* AICoachService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5257C9E2CD9CCF4BAE3FDE9 /* AICoachService.swift */; };
+		D4ACDEF19770014F38C9DF1A /* MacroRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44885A157627CF1538F106A6 /* MacroRingView.swift */; };
+		D66CE5752E0788F471EF1416 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A0187B235B3226F1925B9 /* ChatBubbleView.swift */; };
+		E6B41BA88507D3333928C8AD /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4F77C42903A8FAF41CEC2A /* NutritionView.swift */; };
+		EA2098E072832062FBBBA5A5 /* TrendChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792734A34CF4C757AF8C69F /* TrendChartView.swift */; };
+		EE1DA97D97FFF3E135B576C9 /* DailySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7664A79B50175C09BFC594 /* DailySnapshot.swift */; };
+		EE4BD066A7343334F1BEBCB3 /* VideoProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEFE10E9C2D9A80AE7D9CE /* VideoProcessingService.swift */; };
+		F1EAEED2158986462433C0F6 /* MetricCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D06D59822A7BB61F6929BF /* MetricCardView.swift */; };
+		F4B465EE7B663F39979B16C3 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A526BF8E2A3FB6BC89E8BB2 /* UserProfile.swift */; };
+		F6E625C790DE7AA4EE613F23 /* ProgressPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3F973393467212264F9759 /* ProgressPhoto.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		378D4CCAF254CFC49C57FF87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 527FDB95BD12391732F22FC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41AD4980915D8A97C4548B36;
+			remoteInfo = RockinBod;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00A85000FE3FDB38361EBED5 /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
+		08F4C5B4B9E24D7DA5C56333 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0D3F973393467212264F9759 /* ProgressPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPhoto.swift; sourceTree = "<group>"; };
+		1533F030A4F6ED711ECB5D1F /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
+		18F62F11577D51A1D54AE722 /* DataAggregationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAggregationService.swift; sourceTree = "<group>"; };
+		1FBA3A4FF4A6B3FEB9435150 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		2C452C6B5306DFD6F6B55618 /* CoachMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachMessage.swift; sourceTree = "<group>"; };
+		32BA18C5939227EAD004BCE7 /* CoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachView.swift; sourceTree = "<group>"; };
+		33741E102D25591D877E700F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		36BE97478BA2716E0DA5F88F /* PhotoComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoComparisonView.swift; sourceTree = "<group>"; };
+		3D4F77C42903A8FAF41CEC2A /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
+		41F1A22B220323BA195F70E0 /* NutritionEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionEntry.swift; sourceTree = "<group>"; };
+		4314759C7A4515B666CF0E1A /* FormCheckResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCheckResult.swift; sourceTree = "<group>"; };
+		44885A157627CF1538F106A6 /* MacroRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRingView.swift; sourceTree = "<group>"; };
+		4688D7A59240C17A607E52EA /* ProgressTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrackingView.swift; sourceTree = "<group>"; };
+		596BA00474749D4D22D889BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5A7664A79B50175C09BFC594 /* DailySnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySnapshot.swift; sourceTree = "<group>"; };
+		64EDEF2DFC27744F847C3AC2 /* ExerciseProgressChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseProgressChartView.swift; sourceTree = "<group>"; };
+		6973B014CF60229289D94473 /* BodyMetricsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMetricsChartView.swift; sourceTree = "<group>"; };
+		6A526BF8E2A3FB6BC89E8BB2 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		6C05F4F20192D938B88CA989 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		6DAA6C1F5FA7C4D1A5D855E4 /* RockinBod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RockinBod.entitlements; sourceTree = "<group>"; };
+		70A9705CFAAD5F7CD727DCAA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7D183DF62365055FAB6D9122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		814A0187B235B3226F1925B9 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
+		82ADED2819025E845EE2696D /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
+		85D06D59822A7BB61F6929BF /* MetricCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCardView.swift; sourceTree = "<group>"; };
+		86AA7346026ADB609E9CAD20 /* FormCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCheckView.swift; sourceTree = "<group>"; };
+		8FB3ACBD897BC92B9A56DEAF /* ExerciseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
+		9E775A5D9B0AB60C18CE4844 /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
+		A5257C9E2CD9CCF4BAE3FDE9 /* AICoachService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachService.swift; sourceTree = "<group>"; };
+		A5CEDD5B1E395619650F7D92 /* RockinBodTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RockinBodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA59297BD7BD48F0CAD5E0AA /* WeeklyReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReviewView.swift; sourceTree = "<group>"; };
+		ADCAE7EF325F8873B07D182C /* WeeklyReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReport.swift; sourceTree = "<group>"; };
+		B5ED259A7F4E6CCAD2395221 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		C2A35457FB9A567108E0B7E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C7184DA67C570BC93C4CE4C5 /* BodyMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurement.swift; sourceTree = "<group>"; };
+		C792734A34CF4C757AF8C69F /* TrendChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendChartView.swift; sourceTree = "<group>"; };
+		CAFCE389BB1AB2835403F06B /* RockinBodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockinBodApp.swift; sourceTree = "<group>"; };
+		D472341865A32435E7BC2772 /* RenphoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenphoService.swift; sourceTree = "<group>"; };
+		D4EEFE10E9C2D9A80AE7D9CE /* VideoProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProcessingService.swift; sourceTree = "<group>"; };
+		D732D612F04F90DA910FD097 /* MicronutrientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicronutrientListView.swift; sourceTree = "<group>"; };
+		E422CCB58E612C8C49518052 /* HevyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HevyService.swift; sourceTree = "<group>"; };
+		E531F3EE2F6DFD06CB4F2BDD /* CronometerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronometerService.swift; sourceTree = "<group>"; };
+		EC22BEEA3A65D5207EC6AFB3 /* IntegrationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationSettingsView.swift; sourceTree = "<group>"; };
+		F0BA3B7CE50C71E55A91F7C6 /* RockinBod.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RockinBod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5AA7DCCF2AB076F3620539E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		07075E0D19F976D12D4AD840 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				6C05F4F20192D938B88CA989 /* DashboardView.swift */,
+				85D06D59822A7BB61F6929BF /* MetricCardView.swift */,
+				C792734A34CF4C757AF8C69F /* TrendChartView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		25104E6066933FDBE8090DA7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F5AA7DCCF2AB076F3620539E /* Constants.swift */,
+				33741E102D25591D877E700F /* Extensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		45BC46D9572A2FE633A8F5CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C7184DA67C570BC93C4CE4C5 /* BodyMeasurement.swift */,
+				2C452C6B5306DFD6F6B55618 /* CoachMessage.swift */,
+				5A7664A79B50175C09BFC594 /* DailySnapshot.swift */,
+				8FB3ACBD897BC92B9A56DEAF /* ExerciseSet.swift */,
+				4314759C7A4515B666CF0E1A /* FormCheckResult.swift */,
+				41F1A22B220323BA195F70E0 /* NutritionEntry.swift */,
+				0D3F973393467212264F9759 /* ProgressPhoto.swift */,
+				6A526BF8E2A3FB6BC89E8BB2 /* UserProfile.swift */,
+				ADCAE7EF325F8873B07D182C /* WeeklyReport.swift */,
+				1533F030A4F6ED711ECB5D1F /* WorkoutSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4D72732E2D1D92E677AAC894 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				596BA00474749D4D22D889BB /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		8068261D2F76915F965B452A /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				814A0187B235B3226F1925B9 /* ChatBubbleView.swift */,
+				32BA18C5939227EAD004BCE7 /* CoachView.swift */,
+				86AA7346026ADB609E9CAD20 /* FormCheckView.swift */,
+				AA59297BD7BD48F0CAD5E0AA /* WeeklyReviewView.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		8AEC542FAAB4D7D8D9110287 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5257C9E2CD9CCF4BAE3FDE9 /* AICoachService.swift */,
+				E531F3EE2F6DFD06CB4F2BDD /* CronometerService.swift */,
+				18F62F11577D51A1D54AE722 /* DataAggregationService.swift */,
+				B5ED259A7F4E6CCAD2395221 /* HealthKitService.swift */,
+				E422CCB58E612C8C49518052 /* HevyService.swift */,
+				1FBA3A4FF4A6B3FEB9435150 /* KeychainService.swift */,
+				D472341865A32435E7BC2772 /* RenphoService.swift */,
+				D4EEFE10E9C2D9A80AE7D9CE /* VideoProcessingService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8C87DF1D38CB44B1740123CD /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				64EDEF2DFC27744F847C3AC2 /* ExerciseProgressChartView.swift */,
+				82ADED2819025E845EE2696D /* WorkoutDetailView.swift */,
+				9E775A5D9B0AB60C18CE4844 /* WorkoutsView.swift */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
+		8F0C7D0BD66DCF25091AD2F9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A65098934012C90DDF00E168 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EC22BEEA3A65D5207EC6AFB3 /* IntegrationSettingsView.swift */,
+				70A9705CFAAD5F7CD727DCAA /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B7AA1C4EAE90688E758EB354 /* RockinBod */ = {
+			isa = PBXGroup;
+			children = (
+				BF94771B43566EB2B0E02FAC /* App */,
+				45BC46D9572A2FE633A8F5CA /* Models */,
+				8AEC542FAAB4D7D8D9110287 /* Services */,
+				25104E6066933FDBE8090DA7 /* Utilities */,
+				D1ADFED9764A4E2C53976446 /* Views */,
+				7D183DF62365055FAB6D9122 /* Assets.xcassets */,
+				C2A35457FB9A567108E0B7E8 /* Info.plist */,
+				6DAA6C1F5FA7C4D1A5D855E4 /* RockinBod.entitlements */,
+			);
+			path = RockinBod;
+			sourceTree = "<group>";
+		};
+		BF94771B43566EB2B0E02FAC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				08F4C5B4B9E24D7DA5C56333 /* ContentView.swift */,
+				CAFCE389BB1AB2835403F06B /* RockinBodApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C13995870D2F506646286F75 /* Nutrition */ = {
+			isa = PBXGroup;
+			children = (
+				44885A157627CF1538F106A6 /* MacroRingView.swift */,
+				D732D612F04F90DA910FD097 /* MicronutrientListView.swift */,
+				3D4F77C42903A8FAF41CEC2A /* NutritionView.swift */,
+			);
+			path = Nutrition;
+			sourceTree = "<group>";
+		};
+		CF373E083577955BFC77C48D /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				6973B014CF60229289D94473 /* BodyMetricsChartView.swift */,
+				00A85000FE3FDB38361EBED5 /* PhotoCaptureView.swift */,
+				36BE97478BA2716E0DA5F88F /* PhotoComparisonView.swift */,
+				4688D7A59240C17A607E52EA /* ProgressTrackingView.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		D15DA841E7C7D30161851E00 = {
+			isa = PBXGroup;
+			children = (
+				B7AA1C4EAE90688E758EB354 /* RockinBod */,
+				D1FE011C9BE790523EDC8887 /* RockinBodTests */,
+				DCF2AA088F7F5CACC02ADDCA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D1ADFED9764A4E2C53976446 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8068261D2F76915F965B452A /* Coach */,
+				8F0C7D0BD66DCF25091AD2F9 /* Components */,
+				07075E0D19F976D12D4AD840 /* Dashboard */,
+				C13995870D2F506646286F75 /* Nutrition */,
+				4D72732E2D1D92E677AAC894 /* Onboarding */,
+				CF373E083577955BFC77C48D /* Progress */,
+				A65098934012C90DDF00E168 /* Settings */,
+				8C87DF1D38CB44B1740123CD /* Workouts */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D1FE011C9BE790523EDC8887 /* RockinBodTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RockinBodTests;
+			sourceTree = "<group>";
+		};
+		DCF2AA088F7F5CACC02ADDCA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0BA3B7CE50C71E55A91F7C6 /* RockinBod.app */,
+				A5CEDD5B1E395619650F7D92 /* RockinBodTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41AD4980915D8A97C4548B36 /* RockinBod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37E3614C5D2F1C3E5F9129D1 /* Build configuration list for PBXNativeTarget "RockinBod" */;
+			buildPhases = (
+				3FF849F6C654FDBD85578DFA /* Sources */,
+				5F473F5EF200CE8C6D6A58BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RockinBod;
+			packageProductDependencies = (
+			);
+			productName = RockinBod;
+			productReference = F0BA3B7CE50C71E55A91F7C6 /* RockinBod.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA6D3C78BC1ADD36976A3E1E /* RockinBodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B29A530F0AA108BA165B8F2 /* Build configuration list for PBXNativeTarget "RockinBodTests" */;
+			buildPhases = (
+				C1E682EEDC6E2B1FCF837CC5 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0024BF2D428335878390688 /* PBXTargetDependency */,
+			);
+			name = RockinBodTests;
+			packageProductDependencies = (
+			);
+			productName = RockinBodTests;
+			productReference = A5CEDD5B1E395619650F7D92 /* RockinBodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		527FDB95BD12391732F22FC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					41AD4980915D8A97C4548B36 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CC9F190B91DD1DCB5B1D4E64 /* Build configuration list for PBXProject "RockinBod" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D15DA841E7C7D30161851E00;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DCF2AA088F7F5CACC02ADDCA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41AD4980915D8A97C4548B36 /* RockinBod */,
+				BA6D3C78BC1ADD36976A3E1E /* RockinBodTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F473F5EF200CE8C6D6A58BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CBBFEA73ED0E62C352838CA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3FF849F6C654FDBD85578DFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3B528F6CC14B0AEF4B5088F /* AICoachService.swift in Sources */,
+				708CC34F37E45EF9F5A49084 /* BodyMeasurement.swift in Sources */,
+				4B489568914E4C5C5531BD60 /* BodyMetricsChartView.swift in Sources */,
+				D66CE5752E0788F471EF1416 /* ChatBubbleView.swift in Sources */,
+				8FB7C0220D2CF4E4C4432089 /* CoachMessage.swift in Sources */,
+				1C1DFCC077CED1EB8B6A7FE7 /* CoachView.swift in Sources */,
+				67A33AA4AEE6E0351E43B430 /* Constants.swift in Sources */,
+				772CF04B5D7636791E1F9AE8 /* ContentView.swift in Sources */,
+				3F240F59D6D17BA35B54BE5B /* CronometerService.swift in Sources */,
+				EE1DA97D97FFF3E135B576C9 /* DailySnapshot.swift in Sources */,
+				C8B8517D2808193D7F3AF30B /* DashboardView.swift in Sources */,
+				03372AF8CCC77AF8631D507C /* DataAggregationService.swift in Sources */,
+				1D89FBE8D20FE9E440B0AE61 /* ExerciseProgressChartView.swift in Sources */,
+				28BBFB345D918797A6338487 /* ExerciseSet.swift in Sources */,
+				60D3B81322F594B083902EC2 /* Extensions.swift in Sources */,
+				4F99F3E02B40603CA818A73B /* FormCheckResult.swift in Sources */,
+				C1FD9E6C9DC014025FC03B3E /* FormCheckView.swift in Sources */,
+				65643F007861BEC60088825F /* HealthKitService.swift in Sources */,
+				4E276BC0024F2DBF28219353 /* HevyService.swift in Sources */,
+				A56E688848AF5EBFADF2D06B /* IntegrationSettingsView.swift in Sources */,
+				B0661CFFB8005AA514A386DB /* KeychainService.swift in Sources */,
+				D4ACDEF19770014F38C9DF1A /* MacroRingView.swift in Sources */,
+				F1EAEED2158986462433C0F6 /* MetricCardView.swift in Sources */,
+				47A82643AC1FD8C06282729B /* MicronutrientListView.swift in Sources */,
+				71D7F76A16C195C2078A55F1 /* NutritionEntry.swift in Sources */,
+				E6B41BA88507D3333928C8AD /* NutritionView.swift in Sources */,
+				3494760B6CA12B495EC2C81B /* OnboardingView.swift in Sources */,
+				2B36654E96A567C321430588 /* PhotoCaptureView.swift in Sources */,
+				6BE09C526FE73FA8A9012C45 /* PhotoComparisonView.swift in Sources */,
+				F6E625C790DE7AA4EE613F23 /* ProgressPhoto.swift in Sources */,
+				3AA14EEC353CE0F31D037F88 /* ProgressTrackingView.swift in Sources */,
+				1D01647F78BDDAFDEEE895D6 /* RenphoService.swift in Sources */,
+				01E14696401C5ABB1E0C1420 /* RockinBodApp.swift in Sources */,
+				4A81B7698C6B5C0CC7BF5CBC /* SettingsView.swift in Sources */,
+				EA2098E072832062FBBBA5A5 /* TrendChartView.swift in Sources */,
+				F4B465EE7B663F39979B16C3 /* UserProfile.swift in Sources */,
+				EE4BD066A7343334F1BEBCB3 /* VideoProcessingService.swift in Sources */,
+				7B53E3F859B1A5FBFC659643 /* WeeklyReport.swift in Sources */,
+				65FDFAE754B6CD0F331C8625 /* WeeklyReviewView.swift in Sources */,
+				3E5739BDCD132E59AABAE983 /* WorkoutDetailView.swift in Sources */,
+				AC42BA7F2CB5802A71BEE249 /* WorkoutSession.swift in Sources */,
+				1459023EE7A9B3BC1F97C117 /* WorkoutsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1E682EEDC6E2B1FCF837CC5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0024BF2D428335878390688 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41AD4980915D8A97C4548B36 /* RockinBod */;
+			targetProxy = 378D4CCAF254CFC49C57FF87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4599CCD4DBE668830CF269BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RockinBod/RockinBod.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RockinBod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66B7879724CEAF63E2A3C4C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockinBod.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RockinBod";
+			};
+			name = Debug;
+		};
+		729787060D39683293E51536 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RockinBod/RockinBod.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RockinBod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		81A8BF090F0B7AC6035FB430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		85DDF564E26FEC27DE8D1F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rockinbod.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RockinBod.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RockinBod";
+			};
+			name = Release;
+		};
+		C4434028732AE16E3AB247C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37E3614C5D2F1C3E5F9129D1 /* Build configuration list for PBXNativeTarget "RockinBod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4599CCD4DBE668830CF269BE /* Debug */,
+				729787060D39683293E51536 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6B29A530F0AA108BA165B8F2 /* Build configuration list for PBXNativeTarget "RockinBodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66B7879724CEAF63E2A3C4C7 /* Debug */,
+				85DDF564E26FEC27DE8D1F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CC9F190B91DD1DCB5B1D4E64 /* Build configuration list for PBXProject "RockinBod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4434028732AE16E3AB247C3 /* Debug */,
+				81A8BF090F0B7AC6035FB430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 527FDB95BD12391732F22FC7 /* Project object */;
+}
