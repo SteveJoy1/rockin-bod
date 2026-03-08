@@ -33,6 +33,7 @@ struct SettingsView: View {
     @State private var showClearDataAlert = false
     @State private var profileSaved = false
     @State private var hasLoadedProfile = false
+    @State private var cronometerHasSync = false
 
     // MARK: - Units & Notifications State
 
@@ -67,6 +68,9 @@ struct SettingsView: View {
                     loadProfileData()
                     hasLoadedProfile = true
                 }
+            }
+            .task {
+                cronometerHasSync = await cronometerService.hasHealthKitNutritionSync
             }
         }
     }
@@ -237,7 +241,8 @@ struct SettingsView: View {
                     healthKitService: healthKitService,
                     hevyService: hevyService,
                     cronometerService: cronometerService,
-                    renphoService: renphoService
+                    renphoService: renphoService,
+                    aiCoachService: aiCoachService
                 )
             } label: {
                 HStack {
@@ -263,7 +268,7 @@ struct SettingsView: View {
                 name: "Cronometer",
                 icon: "fork.knife",
                 color: .orange,
-                isConnected: false
+                isConnected: cronometerHasSync
             )
             integrationStatusRow(
                 name: "Renpho",

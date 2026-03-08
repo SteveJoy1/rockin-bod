@@ -171,11 +171,11 @@ final class HevyService {
                     break
                 }
 
-                // Check for duplicate imports using Hevy workout ID in notes
+                // Check for duplicate imports using Hevy workout ID in sourceIdentifier
                 let hevyId = hevyWorkout.id
                 let hevySource = "hevy"
                 let existingPredicate = #Predicate<WorkoutSession> { session in
-                    session.sourceRaw == hevySource && session.notes == hevyId
+                    session.sourceRaw == hevySource && session.sourceIdentifier == hevyId
                 }
                 let existingDescriptor = FetchDescriptor<WorkoutSession>(predicate: existingPredicate)
                 let existingCount = (try? context.fetchCount(existingDescriptor)) ?? 0
@@ -200,7 +200,7 @@ final class HevyService {
                     workoutType: inferWorkoutType(from: hevyWorkout),
                     durationMinutes: durationMinutes,
                     source: .hevy,
-                    notes: hevyWorkout.id
+                    sourceIdentifier: hevyWorkout.id
                 )
 
                 // Convert exercises and sets

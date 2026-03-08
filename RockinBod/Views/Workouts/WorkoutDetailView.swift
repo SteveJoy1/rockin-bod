@@ -419,7 +419,8 @@ struct WorkoutDetailView: View {
 
     @ViewBuilder
     private func notesSection(_ workout: WorkoutSession) -> some View {
-        if let notes = workout.notes, !notes.isEmpty {
+        // Filter out Hevy UUIDs that were stored as notes in older imports
+        if let notes = workout.notes, !notes.isEmpty, !isHevyUUID(notes, source: workout.source) {
             VStack(alignment: .leading, spacing: 8) {
                 Label("Notes", systemImage: "note.text")
                     .font(.headline)
@@ -433,6 +434,14 @@ struct WorkoutDetailView: View {
             .background(.background, in: RoundedRectangle(cornerRadius: 12))
             .shadow(color: .black.opacity(0.06), radius: 4, x: 0, y: 2)
         }
+    }
+
+    /// Check if a notes string is actually a Hevy workout UUID stored by older import code.
+    private func isHevyUUID(_ text: String, source: DataSource) -> Bool {
+        guard source == .hevy else { return false }
+        // Hevy IDs are UUID-like strings (hex + hyphens, 32-36 chars)
+        let uuidPattern = #"^[0-9a-fA-F-]{32,36}$"#
+        return text.range(of: uuidPattern, options: .regularExpression) != nil
     }
 
     // MARK: - Helpers

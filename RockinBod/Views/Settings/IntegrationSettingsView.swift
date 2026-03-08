@@ -9,6 +9,7 @@ struct IntegrationSettingsView: View {
     var hevyService: HevyService
     var cronometerService: CronometerService
     var renphoService: RenphoService
+    var aiCoachService: AICoachService
 
     // MARK: - Hevy State
 
@@ -124,7 +125,7 @@ struct IntegrationSettingsView: View {
                 Label("Hevy", systemImage: "dumbbell.fill")
                     .foregroundStyle(.blue)
                 Spacer()
-                statusBadge(isConnected: healthKitService.isAuthorized || hevyService.isConfigured)
+                statusBadge(isConnected: hevyService.isConfigured)
             }
 
             // Primary: HealthKit sync (recommended)
@@ -355,7 +356,7 @@ struct IntegrationSettingsView: View {
                 Label("AI Coach (Claude)", systemImage: "brain")
                     .foregroundStyle(.green)
                 Spacer()
-                statusBadge(isConnected: true)
+                statusBadge(isConnected: aiCoachService.isConfigured)
             }
 
             VStack(alignment: .leading, spacing: 8) {
@@ -481,7 +482,8 @@ struct IntegrationSettingsView: View {
             healthKitService: healthKit,
             hevyService: HevyService(),
             cronometerService: CronometerService(),
-            renphoService: RenphoService(healthKitService: healthKit)
+            renphoService: RenphoService(healthKitService: healthKit),
+            aiCoachService: AICoachService()
         )
     }
     .modelContainer(for: [

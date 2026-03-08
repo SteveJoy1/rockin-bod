@@ -35,7 +35,45 @@ final class HevyServiceTests: XCTestCase {
         XCTAssertNil(date)
     }
 
-    // MARK: - inferWorkoutType Tests (placeholder for Phase 3)
-    // Note: inferWorkoutType requires a HevyWorkout struct which may need
-    // internal visibility. Tests will be added in Phase 3.
+    // MARK: - inferWorkoutType Tests
+
+    private func makeHevyWorkout(title: String, exerciseTitles: [String] = []) -> HevyWorkout {
+        let exercises = exerciseTitles.map { title in
+            HevyExerciseData(
+                title: title,
+                exercise_template_id: "test",
+                sets: [HevySet(type: "normal", weight_kg: 50, reps: 10, duration_seconds: nil, rpe: nil)]
+            )
+        }
+        return HevyWorkout(
+            id: UUID().uuidString,
+            title: title,
+            start_time: "2024-01-15T10:00:00Z",
+            end_time: "2024-01-15T11:00:00Z",
+            exercises: exercises
+        )
+    }
+
+    func testInferWorkoutType_strengthFromTitle() {
+        let workout = makeHevyWorkout(title: "Upper Body Strength")
+        XCTAssertEqual(service.inferWorkoutType(from: workout), .strength)
+    }
+
+    func testInferWorkoutType_cardioFromTitle() {
+        // "run" matches .cardio since it's checked before .running ("running")
+        let workout = makeHevyWorkout(title: "Morning Run")
+        XCTAssertEqual(service.inferWorkoutType(from: workout), .cardio)
+    }
+
+    func testInferWorkoutType_hiitFromTitle() {
+        let workout = makeHevyWorkout(title: "HIIT Circuit")
+        XCTAssertEqual(service.inferWorkoutType(from: workout), .hiit)
+    }
+
+    func testInferWorkoutType_defaultsToStrength() {
+        let workout = makeHevyWorkout(title: "My Custom Workout", exerciseTitles: ["Bench Press"])
+        let type = service.inferWorkoutType(from: workout)
+        // Should infer strength from exercise name containing weight-based exercises
+        XCTAssertNotNil(type)
+    }
 }

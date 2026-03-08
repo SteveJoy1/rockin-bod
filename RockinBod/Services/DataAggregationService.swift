@@ -239,8 +239,13 @@ final class DataAggregationService {
             // Extract calories and heart rate statistics
             let caloriesBurned = hkWorkout.totalEnergyBurned?.doubleValue(for: .kilocalorie())
 
-            let averageHeartRate: Double? = nil // Heart rate per-workout requires a separate statistics query
-            let maxHeartRate: Double? = nil
+            // Fetch per-workout heart rate (gracefully handle missing data)
+            let heartRate = try? await healthKitService.fetchWorkoutHeartRate(
+                from: hkWorkout.startDate,
+                to: hkWorkout.endDate
+            )
+            let averageHeartRate = heartRate?.average
+            let maxHeartRate = heartRate?.max
 
             let session = WorkoutSession(
                 date: workoutDate,

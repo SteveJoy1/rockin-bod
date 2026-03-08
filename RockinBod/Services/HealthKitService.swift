@@ -38,6 +38,7 @@ protocol HealthKitServiceProtocol {
     func fetchSleepHours(for date: Date) async throws -> Double?
     func fetchBodyMeasurements(from startDate: Date, to endDate: Date) async throws -> [(date: Date, weight: Double?, bodyFat: Double?, bmi: Double?, leanMass: Double?)]
     func fetchNutrition(for date: Date) async throws -> (calories: Double, protein: Double, carbs: Double, fat: Double, fiber: Double, sugar: Double, sodium: Double, cholesterol: Double, micros: [String: Double])
+    func fetchWorkoutHeartRate(from startDate: Date, to endDate: Date) async throws -> (average: Double?, max: Double?)
 }
 
 // MARK: - HealthKit Service
@@ -526,6 +527,44 @@ final class HealthKitService: HealthKitServiceProtocol {
 
         default:
             return .other
+        }
+    }
+
+    // MARK: - Workout Heart Rate
+
+    /// Fetch average and max heart rate for a specific workout time range.
+    func fetchWorkoutHeartRate(
+        from startDate: Date,
+        to endDate: Date
+    ) async throws -> (average: Double?, max: Double?) {
+        guard Self.isAvailable else { throw HealthKitError.notAvailable }
+        guard let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate) else {
+            throw HealthKitError.invalidQuantityType
+        }
+
+        let predicate = HKQuery.predicateForSamples(
+            withStart: startDate,
+            end: endDate,
+            options: .strictStartDate
+        )
+        let bpmUnit = HKUnit.count().unitDivided(by: .minute())
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKStatisticsQuery(
+                quantityType: heartRateType,
+                quantitySamplePredicate: predicate,
+                options: [.discreteAverage, .discreteMax]
+            ) { _, statistics, error in
+                if let error {
+                    continuation.resume(throwing: HealthKitError.queryFailed(error))
+                    return
+                }
+
+                let avg = statistics?.averageQuantity()?.doubleValue(for: bpmUnit)
+                let max = statistics?.maximumQuantity()?.doubleValue(for: bpmUnit)
+                continuation.resume(returning: (average: avg, max: max))
+            }
+            healthStore.execute(query)
         }
     }
 

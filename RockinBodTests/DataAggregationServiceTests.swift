@@ -45,6 +45,12 @@ final class MockHealthKitService: HealthKitServiceProtocol {
     func fetchNutrition(for date: Date) async throws -> (calories: Double, protein: Double, carbs: Double, fat: Double, fiber: Double, sugar: Double, sodium: Double, cholesterol: Double, micros: [String: Double]) {
         return mockNutrition
     }
+
+    var mockWorkoutHeartRate: (average: Double?, max: Double?) = (average: 145.0, max: 175.0)
+
+    func fetchWorkoutHeartRate(from startDate: Date, to endDate: Date) async throws -> (average: Double?, max: Double?) {
+        return mockWorkoutHeartRate
+    }
 }
 
 // MARK: - DataAggregationService Tests
@@ -66,6 +72,20 @@ final class DataAggregationServiceTests: XCTestCase {
         XCTAssertEqual(mock.mockActiveCalories, 500.0)
     }
 
-    // MARK: - Placeholder for Phase 3 tests
-    // buildDailySnapshot requires a ModelContext, will be added in Phase 3
+    // MARK: - Heart Rate Mock Tests
+
+    func testMockHeartRateDefaults() async throws {
+        let mock = MockHealthKitService()
+        let hr = try await mock.fetchWorkoutHeartRate(from: Date(), to: Date())
+        XCTAssertEqual(hr.average, 145.0)
+        XCTAssertEqual(hr.max, 175.0)
+    }
+
+    func testMockHeartRateNilValues() async throws {
+        let mock = MockHealthKitService()
+        mock.mockWorkoutHeartRate = (average: nil, max: nil)
+        let hr = try await mock.fetchWorkoutHeartRate(from: Date(), to: Date())
+        XCTAssertNil(hr.average)
+        XCTAssertNil(hr.max)
+    }
 }

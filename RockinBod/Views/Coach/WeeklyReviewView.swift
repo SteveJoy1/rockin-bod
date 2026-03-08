@@ -443,7 +443,7 @@ struct WeeklyReviewView: View {
                     return end - start
                 }(),
                 currentWeight: snapshot.weightTrend.end,
-                bodyFatPercentage: nil,
+                bodyFatPercentage: snapshot.dailySnapshots.compactMap({ $0.bodyMeasurement?.bodyFatPercentage }).last,
                 goal: userProfile?.goal.displayName ?? "General fitness"
             )
 

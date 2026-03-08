@@ -14,6 +14,8 @@ final class WorkoutSession {
     var maxHeartRate: Double?
     var sourceRaw: String
     var notes: String?
+    /// External identifier for deduplication (e.g., Hevy workout ID). Separate from user-visible notes.
+    var sourceIdentifier: String?
     @Relationship(deleteRule: .cascade) var exercises: [ExerciseSet]
 
     var workoutType: WorkoutType {
@@ -36,7 +38,8 @@ final class WorkoutSession {
         averageHeartRate: Double? = nil,
         maxHeartRate: Double? = nil,
         source: DataSource = .manual,
-        notes: String? = nil
+        notes: String? = nil,
+        sourceIdentifier: String? = nil
     ) {
         self.id = UUID()
         self.date = date
@@ -49,6 +52,7 @@ final class WorkoutSession {
         self.maxHeartRate = maxHeartRate
         self.sourceRaw = source.rawValue
         self.notes = notes
+        self.sourceIdentifier = sourceIdentifier
         self.exercises = []
     }
 }
