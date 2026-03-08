@@ -51,6 +51,13 @@
 		F4B465EE7B663F39979B16C3 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A526BF8E2A3FB6BC89E8BB2 /* UserProfile.swift */; };
 		F6E625C790DE7AA4EE613F23 /* ProgressPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3F973393467212264F9759 /* ProgressPhoto.swift */; };
 		A1B2C3D4E5F60718192A3B4C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2F3A4B5C60718293A4B5D /* Secrets.swift */; };
+		B1A2C3D4E5F60001AABB0001 /* RockinBodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2D3E4F5060001AABB0001 /* RockinBodTests.swift */; };
+		B1A2C3D4E5F60001AABB0002 /* AICoachParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2D3E4F5060001AABB0002 /* AICoachParsingTests.swift */; };
+		B1A2C3D4E5F60001AABB0003 /* CronometerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2D3E4F5060001AABB0003 /* CronometerServiceTests.swift */; };
+		B1A2C3D4E5F60001AABB0004 /* ScoreDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2D3E4F5060001AABB0004 /* ScoreDisplayTests.swift */; };
+		B1A2C3D4E5F60001AABB0005 /* HevyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2D3E4F5060001AABB0005 /* HevyServiceTests.swift */; };
+		B1A2C3D4E5F60001AABB0006 /* UnitConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2D3E4F5060001AABB0006 /* UnitConversionTests.swift */; };
+		B1A2C3D4E5F60001AABB0007 /* DataAggregationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2D3E4F5060001AABB0007 /* DataAggregationServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +119,13 @@
 		F0BA3B7CE50C71E55A91F7C6 /* RockinBod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockinBod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E2F3A4B5C60718293A4B5D /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F5AA7DCCF2AB076F3620539E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C1A2D3E4F5060001AABB0001 /* RockinBodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockinBodTests.swift; sourceTree = "<group>"; };
+		C1A2D3E4F5060001AABB0002 /* AICoachParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachParsingTests.swift; sourceTree = "<group>"; };
+		C1A2D3E4F5060001AABB0003 /* CronometerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronometerServiceTests.swift; sourceTree = "<group>"; };
+		C1A2D3E4F5060001AABB0004 /* ScoreDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDisplayTests.swift; sourceTree = "<group>"; };
+		C1A2D3E4F5060001AABB0005 /* HevyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HevyServiceTests.swift; sourceTree = "<group>"; };
+		C1A2D3E4F5060001AABB0006 /* UnitConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversionTests.swift; sourceTree = "<group>"; };
+		C1A2D3E4F5060001AABB0007 /* DataAggregationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAggregationServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -284,6 +298,13 @@
 		D1FE011C9BE790523EDC8887 /* RockinBodTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1A2D3E4F5060001AABB0001 /* RockinBodTests.swift */,
+				C1A2D3E4F5060001AABB0002 /* AICoachParsingTests.swift */,
+				C1A2D3E4F5060001AABB0003 /* CronometerServiceTests.swift */,
+				C1A2D3E4F5060001AABB0004 /* ScoreDisplayTests.swift */,
+				C1A2D3E4F5060001AABB0005 /* HevyServiceTests.swift */,
+				C1A2D3E4F5060001AABB0006 /* UnitConversionTests.swift */,
+				C1A2D3E4F5060001AABB0007 /* DataAggregationServiceTests.swift */,
 			);
 			path = RockinBodTests;
 			sourceTree = "<group>";
@@ -436,6 +457,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A2C3D4E5F60001AABB0001 /* RockinBodTests.swift in Sources */,
+				B1A2C3D4E5F60001AABB0002 /* AICoachParsingTests.swift in Sources */,
+				B1A2C3D4E5F60001AABB0003 /* CronometerServiceTests.swift in Sources */,
+				B1A2C3D4E5F60001AABB0004 /* ScoreDisplayTests.swift in Sources */,
+				B1A2C3D4E5F60001AABB0005 /* HevyServiceTests.swift in Sources */,
+				B1A2C3D4E5F60001AABB0006 /* UnitConversionTests.swift in Sources */,
+				B1A2C3D4E5F60001AABB0007 /* DataAggregationServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -571,6 +600,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

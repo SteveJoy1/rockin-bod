@@ -504,7 +504,7 @@ final class AICoachService {
     // MARK: - Response Parsing
 
     /// Parse a PhotoAnalysisResult from Claude's JSON response, with fallback to raw text.
-    private func parsePhotoAnalysisResult(from text: String) throws -> PhotoAnalysisResult {
+    func parsePhotoAnalysisResult(from text: String) throws -> PhotoAnalysisResult {
         let cleaned = cleanJSONString(text)
 
         if let data = cleaned.data(using: .utf8) {
@@ -540,7 +540,7 @@ final class AICoachService {
     }
 
     /// Parse a FormAnalysisResult from Claude's JSON response, with fallback to raw text.
-    private func parseFormAnalysisResult(from text: String) throws -> FormAnalysisResult {
+    func parseFormAnalysisResult(from text: String) throws -> FormAnalysisResult {
         let cleaned = cleanJSONString(text)
 
         if let data = cleaned.data(using: .utf8) {
@@ -582,7 +582,7 @@ final class AICoachService {
     }
 
     /// Parse a WeeklyReviewResult from Claude's JSON response, with fallback to raw text.
-    private func parseWeeklyReviewResult(from text: String) throws -> WeeklyReviewResult {
+    func parseWeeklyReviewResult(from text: String) throws -> WeeklyReviewResult {
         let cleaned = cleanJSONString(text)
 
         if let data = cleaned.data(using: .utf8) {
@@ -657,7 +657,7 @@ final class AICoachService {
     }
 
     /// Remove markdown code fences and leading/trailing whitespace from a JSON string.
-    private func cleanJSONString(_ text: String) -> String {
+    func cleanJSONString(_ text: String) -> String {
         var cleaned = text.trimmingCharacters(in: .whitespacesAndNewlines)
 
         // Remove markdown code fences if present

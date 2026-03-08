@@ -9,12 +9,12 @@ final class DataAggregationService {
 
     // MARK: - Properties
 
-    private let healthKitService: HealthKitService
+    private let healthKitService: any HealthKitServiceProtocol
     private let calendar = Calendar.current
 
     // MARK: - Initialization
 
-    init(healthKitService: HealthKitService) {
+    init(healthKitService: any HealthKitServiceProtocol) {
         self.healthKitService = healthKitService
     }
 

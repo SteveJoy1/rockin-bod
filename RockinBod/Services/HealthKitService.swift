@@ -26,10 +26,24 @@ enum HealthKitError: LocalizedError {
     }
 }
 
+// MARK: - HealthKit Service Protocol
+
+/// Protocol for HealthKitService to enable mock-based testing.
+protocol HealthKitServiceProtocol {
+    var isAuthorized: Bool { get }
+    func fetchWorkouts(from startDate: Date, to endDate: Date) async throws -> [HKWorkout]
+    func fetchSteps(from startDate: Date, to endDate: Date) async throws -> Int
+    func fetchActiveCalories(from startDate: Date, to endDate: Date) async throws -> Double
+    func fetchRestingHeartRate(for date: Date) async throws -> Double?
+    func fetchSleepHours(for date: Date) async throws -> Double?
+    func fetchBodyMeasurements(from startDate: Date, to endDate: Date) async throws -> [(date: Date, weight: Double?, bodyFat: Double?, bmi: Double?, leanMass: Double?)]
+    func fetchNutrition(for date: Date) async throws -> (calories: Double, protein: Double, carbs: Double, fat: Double, fiber: Double, sugar: Double, sodium: Double, cholesterol: Double, micros: [String: Double])
+}
+
 // MARK: - HealthKit Service
 
 @Observable
-final class HealthKitService {
+final class HealthKitService: HealthKitServiceProtocol {
 
     // MARK: - Properties
 

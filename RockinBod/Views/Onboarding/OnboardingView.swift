@@ -646,7 +646,6 @@ struct OnboardingView: View {
                     .buttonStyle(.bordered)
 
                     Button {
-                        saveAPIKeys()
                         withAnimation { currentStep = .ready }
                     } label: {
                         Text("Next")

@@ -269,7 +269,7 @@ final class CronometerService {
     // MARK: - Private Helpers
 
     /// Parse a date string trying multiple formats common in Cronometer exports.
-    private static func parseDate(_ dateString: String) -> Date? {
+    static func parseDate(_ dateString: String) -> Date? {
         let trimmed = dateString.trimmingCharacters(in: .whitespaces)
         for formatter in dateFormatters {
             if let date = formatter.date(from: trimmed) {
@@ -280,7 +280,7 @@ final class CronometerService {
     }
 
     /// Safely extract a Double value from a CSV row using the column index lookup.
-    private func doubleValue(
+    func doubleValue(
         from row: [String],
         columnIndex: [String: Int],
         key: String
@@ -291,7 +291,7 @@ final class CronometerService {
     }
 
     /// Parse a CSV string into rows of fields, handling quoted fields with commas and newlines.
-    private func parseCSVRows(_ csv: String) -> [[String]] {
+    func parseCSVRows(_ csv: String) -> [[String]] {
         var rows: [[String]] = []
         var currentRow: [String] = []
         var currentField = ""

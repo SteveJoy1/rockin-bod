@@ -5,11 +5,11 @@ import SwiftData
 struct RockinBodApp: App {
     let modelContainer: ModelContainer
 
-    @State private var healthKitService = HealthKitService()
-    @State private var hevyService = HevyService()
-    @State private var cronometerService = CronometerService()
+    @State private var healthKitService: HealthKitService
+    @State private var hevyService: HevyService
+    @State private var cronometerService: CronometerService
     @State private var renphoService: RenphoService
-    @State private var aiCoachService = AICoachService()
+    @State private var aiCoachService: AICoachService
     @State private var dataService: DataAggregationService
 
     init() {
@@ -33,7 +33,10 @@ struct RockinBodApp: App {
 
         let hk = HealthKitService()
         _healthKitService = State(initialValue: hk)
+        _hevyService = State(initialValue: HevyService())
+        _cronometerService = State(initialValue: CronometerService())
         _renphoService = State(initialValue: RenphoService(healthKitService: hk))
+        _aiCoachService = State(initialValue: AICoachService())
         _dataService = State(initialValue: DataAggregationService(healthKitService: hk))
     }
 

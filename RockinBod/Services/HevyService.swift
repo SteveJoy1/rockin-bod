@@ -287,7 +287,7 @@ final class HevyService {
     }
 
     /// Parse an ISO 8601 date string into a Date.
-    private func parseDate(_ dateString: String) -> Date? {
+    func parseDate(_ dateString: String) -> Date? {
         // Try with fractional seconds first
         if let date = dateFormatter.date(from: dateString) {
             return date
@@ -300,7 +300,7 @@ final class HevyService {
     }
 
     /// Infer a WorkoutType from the Hevy workout data.
-    private func inferWorkoutType(from workout: HevyWorkout) -> WorkoutType {
+    func inferWorkoutType(from workout: HevyWorkout) -> WorkoutType {
         let titleLower = workout.title.lowercased()
 
         if titleLower.contains("cardio") || titleLower.contains("run") || titleLower.contains("jog") {
