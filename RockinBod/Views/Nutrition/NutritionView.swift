@@ -82,30 +82,28 @@ struct NutritionView: View {
     // MARK: - Body
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    datePickerStrip
-                    macroRingSection
-                    macroSummarySection
-                    additionalNutrientsSection
-                    micronutrientSection
-                    calorieTrendSection
-                }
-                .padding()
+        ScrollView {
+            VStack(spacing: 16) {
+                datePickerStrip
+                macroRingSection
+                macroSummarySection
+                additionalNutrientsSection
+                micronutrientSection
+                calorieTrendSection
             }
-            .navigationTitle("Nutrition")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        selectedDate = Calendar.current.startOfDay(for: Date())
-                    } label: {
-                        Text("Today")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                    }
-                    .disabled(Calendar.current.isDateInToday(selectedDate))
+            .padding()
+        }
+        .navigationTitle("Nutrition")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    selectedDate = Calendar.current.startOfDay(for: Date())
+                } label: {
+                    Text("Today")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
                 }
+                .disabled(Calendar.current.isDateInToday(selectedDate))
             }
         }
     }

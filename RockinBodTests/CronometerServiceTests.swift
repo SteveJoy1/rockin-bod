@@ -45,9 +45,11 @@ final class CronometerServiceTests: XCTestCase {
     }
 
     func testParseCSVRows_windowsLineEndings() {
+        // Swift treats \r\n as a single grapheme cluster; parser normalizes line endings
         let csv = "A,B\r\n1,2\r\n3,4"
         let rows = service.parseCSVRows(csv)
         XCTAssertEqual(rows.count, 3)
+        XCTAssertEqual(rows[0], ["A", "B"])
         XCTAssertEqual(rows[1], ["1", "2"])
         XCTAssertEqual(rows[2], ["3", "4"])
     }

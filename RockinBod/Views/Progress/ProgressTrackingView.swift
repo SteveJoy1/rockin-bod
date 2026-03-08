@@ -21,53 +21,51 @@ struct ProgressTrackingView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                segmentedControl
-                    .padding(.horizontal)
-                    .padding(.top, 8)
+        VStack(spacing: 0) {
+            segmentedControl
+                .padding(.horizontal)
+                .padding(.top, 8)
 
-                ScrollView {
-                    VStack(spacing: 16) {
-                        switch selectedSegment {
-                        case .photos:
-                            photosSection
-                        case .bodyMetrics:
-                            bodyMetricsSection
-                        }
-                    }
-                    .padding()
-                }
-            }
-            .navigationTitle("Progress")
-            .toolbar {
-                if selectedSegment == .photos {
-                    ToolbarItem(placement: .primaryAction) {
-                        Button {
-                            showingPhotoCapture = true
-                        } label: {
-                            Label("Add Photos", systemImage: "camera.fill")
-                        }
+            ScrollView {
+                VStack(spacing: 16) {
+                    switch selectedSegment {
+                    case .photos:
+                        photosSection
+                    case .bodyMetrics:
+                        bodyMetricsSection
                     }
                 }
+                .padding()
             }
-            .sheet(isPresented: $showingPhotoCapture) {
-                PhotoCaptureView()
-            }
-            .fullScreenCover(item: $selectedPhoto) { photo in
-                PhotoDetailView(
-                    photo: photo,
-                    allPhotos: photos,
-                    onCompare: { before, after in
-                        comparisonPhotos = (before: before, after: after)
-                        showingComparison = true
+        }
+        .navigationTitle("Progress")
+        .toolbar {
+            if selectedSegment == .photos {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        showingPhotoCapture = true
+                    } label: {
+                        Label("Add Photos", systemImage: "camera.fill")
                     }
-                )
-            }
-            .fullScreenCover(isPresented: $showingComparison) {
-                if let pair = comparisonPhotos {
-                    PhotoComparisonView(before: pair.before, after: pair.after)
                 }
+            }
+        }
+        .sheet(isPresented: $showingPhotoCapture) {
+            PhotoCaptureView()
+        }
+        .fullScreenCover(item: $selectedPhoto) { photo in
+            PhotoDetailView(
+                photo: photo,
+                allPhotos: photos,
+                onCompare: { before, after in
+                    comparisonPhotos = (before: before, after: after)
+                    showingComparison = true
+                }
+            )
+        }
+        .fullScreenCover(isPresented: $showingComparison) {
+            if let pair = comparisonPhotos {
+                PhotoComparisonView(before: pair.before, after: pair.after)
             }
         }
     }

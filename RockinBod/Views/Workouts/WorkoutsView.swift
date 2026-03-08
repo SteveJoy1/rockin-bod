@@ -61,17 +61,15 @@ struct WorkoutsView: View {
     // MARK: - Body
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    weeklySummaryCard
-                    workoutTypeFilter
-                    workoutsList
-                }
-                .padding()
+        ScrollView {
+            VStack(spacing: 16) {
+                weeklySummaryCard
+                workoutTypeFilter
+                workoutsList
             }
-            .navigationTitle("Workouts")
+            .padding()
         }
+        .navigationTitle("Workouts")
     }
 
     // MARK: - Weekly Summary

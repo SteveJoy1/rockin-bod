@@ -292,12 +292,16 @@ final class CronometerService {
 
     /// Parse a CSV string into rows of fields, handling quoted fields with commas and newlines.
     func parseCSVRows(_ csv: String) -> [[String]] {
+        // Normalize line endings: \r\n → \n, standalone \r → \n
+        let normalized = csv.replacingOccurrences(of: "\r\n", with: "\n")
+                            .replacingOccurrences(of: "\r", with: "\n")
+
         var rows: [[String]] = []
         var currentRow: [String] = []
         var currentField = ""
         var insideQuotes = false
 
-        let characters = Array(csv)
+        let characters = Array(normalized)
         var i = 0
 
         while i < characters.count {
@@ -328,17 +332,6 @@ final class CronometerService {
             case ",":
                 currentRow.append(currentField)
                 currentField = ""
-            case "\r":
-                // Handle \r\n or standalone \r
-                currentRow.append(currentField)
-                currentField = ""
-                if !currentRow.allSatisfy({ $0.isEmpty }) || !rows.isEmpty {
-                    rows.append(currentRow)
-                }
-                currentRow = []
-                if i + 1 < characters.count && characters[i + 1] == "\n" {
-                    i += 1
-                }
             case "\n":
                 currentRow.append(currentField)
                 currentField = ""

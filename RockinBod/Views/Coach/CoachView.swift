@@ -25,22 +25,21 @@ struct CoachView: View {
     private var userProfile: UserProfile? { userProfiles.first }
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                // Segmented picker
-                Picker("Section", selection: $selectedTab) {
-                    ForEach(CoachTab.allCases, id: \.self) { tab in
-                        Text(tab.rawValue).tag(tab)
-                    }
+        VStack(spacing: 0) {
+            // Segmented picker
+            Picker("Section", selection: $selectedTab) {
+                ForEach(CoachTab.allCases, id: \.self) { tab in
+                    Text(tab.rawValue).tag(tab)
                 }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
-                .padding(.vertical, 8)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            .padding(.vertical, 8)
 
-                Divider()
+            Divider()
 
-                // Tab content
-                switch selectedTab {
+            // Tab content
+            switch selectedTab {
                 case .chat:
                     chatSection
                 case .weeklyReview:
@@ -48,26 +47,25 @@ struct CoachView: View {
                 case .formCheck:
                     formCheckSection
                 }
-            }
-            .navigationTitle("AI Coach")
-            .navigationBarTitleDisplayMode(.inline)
-            .alert("Error", isPresented: .init(
-                get: { errorMessage != nil },
-                set: { if !$0 { errorMessage = nil } }
-            )) {
-                Button("OK", role: .cancel) { errorMessage = nil }
-            } message: {
-                Text(errorMessage ?? "An unknown error occurred.")
-            }
-            .sheet(isPresented: $showWeeklyReview) {
-                WeeklyReviewView(
-                    aiCoachService: aiCoachService,
-                    dataService: dataService
-                )
-            }
-            .sheet(isPresented: $showFormCheck) {
-                FormCheckView(aiCoachService: aiCoachService)
-            }
+        }
+        .navigationTitle("AI Coach")
+        .navigationBarTitleDisplayMode(.inline)
+        .alert("Error", isPresented: .init(
+            get: { errorMessage != nil },
+            set: { if !$0 { errorMessage = nil } }
+        )) {
+            Button("OK", role: .cancel) { errorMessage = nil }
+        } message: {
+            Text(errorMessage ?? "An unknown error occurred.")
+        }
+        .sheet(isPresented: $showWeeklyReview) {
+            WeeklyReviewView(
+                aiCoachService: aiCoachService,
+                dataService: dataService
+            )
+        }
+        .sheet(isPresented: $showFormCheck) {
+            FormCheckView(aiCoachService: aiCoachService)
         }
     }
 

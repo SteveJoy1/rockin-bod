@@ -21,32 +21,30 @@ struct DashboardView: View {
     private var latestReport: WeeklyReport? { weeklyReports.first }
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    greetingSection
-                    todaySummaryCard
-                    macroProgressSection
-                    activityCard
-                    weightTrendSection
-                    weeklyReviewSection
-                    syncButton
-                }
-                .padding()
+        ScrollView {
+            VStack(spacing: 16) {
+                greetingSection
+                todaySummaryCard
+                macroProgressSection
+                activityCard
+                weightTrendSection
+                weeklyReviewSection
+                syncButton
             }
-            .navigationTitle("Dashboard")
-            .refreshable {
-                await loadData()
-            }
-            .task {
-                await loadData()
-            }
-            .overlay {
-                if isLoading {
-                    ProgressView("Loading...")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(.ultraThinMaterial)
-                }
+            .padding()
+        }
+        .navigationTitle("Dashboard")
+        .refreshable {
+            await loadData()
+        }
+        .task {
+            await loadData()
+        }
+        .overlay {
+            if isLoading {
+                ProgressView("Loading...")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.ultraThinMaterial)
             }
         }
     }
@@ -296,7 +294,7 @@ struct DashboardView: View {
             Circle()
                 .stroke(scoreColor(score).opacity(0.2), lineWidth: 4)
             Circle()
-                .trim(from: 0, to: CGFloat(score) / 100.0)
+                .trim(from: 0, to: CGFloat(score) / 10.0)
                 .stroke(scoreColor(score), style: StrokeStyle(lineWidth: 4, lineCap: .round))
                 .rotationEffect(.degrees(-90))
             Text("\(score)")
@@ -309,9 +307,9 @@ struct DashboardView: View {
 
     private func scoreColor(_ score: Int) -> Color {
         switch score {
-        case 80...100: return .green
-        case 60..<80: return .yellow
-        case 40..<60: return .orange
+        case 8...10: return .green
+        case 6..<8: return .yellow
+        case 4..<6: return .orange
         default: return .red
         }
     }
