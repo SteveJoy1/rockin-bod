@@ -33,6 +33,8 @@ struct FormAnalysisResult {
     var overallRating: String
     var feedback: String
     var keyPoints: [FormAnalysisKeyPoint]
+    /// True when Claude's response was not valid JSON and the raw text was used as fallback.
+    var isRawTextFallback: Bool = false
 }
 
 struct FormAnalysisKeyPoint: Codable {
@@ -51,6 +53,8 @@ struct WeeklyReviewResult {
     var bodyCompFeedback: String
     var recommendations: [String]
     var overallScore: Int?
+    /// True when Claude's response was not valid JSON and the raw text was used as fallback.
+    var isRawTextFallback: Bool = false
 }
 
 // MARK: - AI Coach Errors
@@ -577,7 +581,8 @@ final class AICoachService {
         return FormAnalysisResult(
             overallRating: "needs_work",
             feedback: text,
-            keyPoints: []
+            keyPoints: [],
+            isRawTextFallback: true
         )
     }
 
@@ -624,7 +629,8 @@ final class AICoachService {
             nutritionFeedback: "",
             bodyCompFeedback: "",
             recommendations: [],
-            overallScore: nil
+            overallScore: nil,
+            isRawTextFallback: true
         )
     }
 

@@ -11,6 +11,8 @@ struct DashboardView: View {
     var healthKitService: HealthKitService
     var dataService: DataAggregationService
 
+    @AppStorage("useMetricUnits") private var useMetricUnits = true
+
     @State private var todaySnapshot: DailySnapshot?
     @State private var weightTrendData: [TrendDataPoint] = []
     @State private var isSyncing = false
@@ -247,11 +249,15 @@ struct DashboardView: View {
     // MARK: - Weight Trend
 
     private var weightTrendSection: some View {
-        TrendChartView(
+        let displayData: [TrendDataPoint] = useMetricUnits
+            ? weightTrendData
+            : weightTrendData.map { TrendDataPoint(date: $0.date, value: $0.value.kgToLbs) }
+
+        return TrendChartView(
             title: "Weight Trend (14 days)",
-            data: weightTrendData,
+            data: displayData,
             color: .purple,
-            unitLabel: "kg"
+            unitLabel: useMetricUnits ? "kg" : "lbs"
         )
     }
 

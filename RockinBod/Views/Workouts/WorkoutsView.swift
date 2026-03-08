@@ -6,6 +6,7 @@ struct WorkoutsView: View {
     @Query(sort: \WorkoutSession.date, order: .reverse)
     private var allWorkouts: [WorkoutSession]
 
+    @AppStorage("useMetricUnits") private var useMetricUnits = true
     @State private var selectedType: WorkoutType?
 
     // MARK: - Filtered Data
@@ -305,10 +306,11 @@ struct WorkoutsView: View {
     }
 
     private func formattedVolume(_ volume: Double) -> String {
-        if volume >= 1000 {
-            return String(format: "%.1fk", volume / 1000)
+        let displayVolume = useMetricUnits ? volume : volume.kgToLbs
+        if displayVolume >= 1000 {
+            return String(format: "%.1fk", displayVolume / 1000)
         }
-        return "\(Int(volume))"
+        return "\(Int(displayVolume))"
     }
 
     private func colorForWorkoutType(_ type: WorkoutType) -> Color {

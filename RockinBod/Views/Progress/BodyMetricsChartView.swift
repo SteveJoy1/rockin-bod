@@ -6,6 +6,7 @@ struct BodyMetricsChartView: View {
     @Query(sort: \BodyMeasurement.date, order: .reverse)
     private var allMeasurements: [BodyMeasurement]
 
+    @AppStorage("useMetricUnits") private var useMetricUnits = true
     @State private var selectedRange: DateRange = .threeMonths
 
     enum DateRange: String, CaseIterable {
@@ -152,12 +153,23 @@ struct BodyMetricsChartView: View {
 
     // MARK: - Charts
 
+    private var weightUnit: String { useMetricUnits ? "kg" : "lbs" }
+    private var lengthUnit: String { useMetricUnits ? "cm" : "in" }
+
+    private func convertedWeightData(_ data: [TrendDataPoint]) -> [TrendDataPoint] {
+        useMetricUnits ? data : data.map { TrendDataPoint(date: $0.date, value: $0.value.kgToLbs) }
+    }
+
+    private func convertedLengthData(_ data: [TrendDataPoint]) -> [TrendDataPoint] {
+        useMetricUnits ? data : data.map { TrendDataPoint(date: $0.date, value: $0.value.cmToInches) }
+    }
+
     private var weightChart: some View {
         TrendChartView(
             title: "Weight",
-            data: trendData(for: \.weightKg),
+            data: convertedWeightData(trendData(for: \.weightKg)),
             color: .purple,
-            unitLabel: "kg"
+            unitLabel: weightUnit
         )
     }
 
@@ -180,9 +192,9 @@ struct BodyMetricsChartView: View {
         if !data.isEmpty {
             TrendChartView(
                 title: "Muscle Mass",
-                data: data,
+                data: convertedWeightData(data),
                 color: .green,
-                unitLabel: "kg"
+                unitLabel: weightUnit
             )
         }
     }
@@ -222,45 +234,45 @@ struct BodyMetricsChartView: View {
                 if !waistData.isEmpty {
                     TrendChartView(
                         title: "Waist",
-                        data: waistData,
+                        data: convertedLengthData(waistData),
                         color: .red,
-                        unitLabel: "cm"
+                        unitLabel: lengthUnit
                     )
                 }
 
                 if !chestData.isEmpty {
                     TrendChartView(
                         title: "Chest",
-                        data: chestData,
+                        data: convertedLengthData(chestData),
                         color: .blue,
-                        unitLabel: "cm"
+                        unitLabel: lengthUnit
                     )
                 }
 
                 if !hipsData.isEmpty {
                     TrendChartView(
                         title: "Hips",
-                        data: hipsData,
+                        data: convertedLengthData(hipsData),
                         color: .purple,
-                        unitLabel: "cm"
+                        unitLabel: lengthUnit
                     )
                 }
 
                 if !armData.isEmpty {
                     TrendChartView(
                         title: "Arms (L)",
-                        data: armData,
+                        data: convertedLengthData(armData),
                         color: .teal,
-                        unitLabel: "cm"
+                        unitLabel: lengthUnit
                     )
                 }
 
                 if !thighData.isEmpty {
                     TrendChartView(
                         title: "Thighs (L)",
-                        data: thighData,
+                        data: convertedLengthData(thighData),
                         color: .cyan,
-                        unitLabel: "cm"
+                        unitLabel: lengthUnit
                     )
                 }
             }

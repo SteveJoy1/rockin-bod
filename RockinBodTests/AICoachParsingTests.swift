@@ -89,6 +89,20 @@ final class AICoachParsingTests: XCTestCase {
         XCTAssertTrue(result.nutritionFeedback.isEmpty)
         XCTAssertTrue(result.recommendations.isEmpty)
         XCTAssertNil(result.overallScore)
+        XCTAssertTrue(result.isRawTextFallback)
+    }
+
+    func testParseWeeklyReviewResult_validJSON_notFallback() throws {
+        let json = """
+        {"summary":"Good","trainingFeedback":"Nice","nutritionFeedback":"OK","bodyCompFeedback":"Stable","recommendations":[],"overallScore":8}
+        """
+        let result = try service.parseWeeklyReviewResult(from: json)
+        XCTAssertFalse(result.isRawTextFallback)
+    }
+
+    func testParseWeeklyReviewResult_emptyString() throws {
+        let result = try service.parseWeeklyReviewResult(from: "")
+        XCTAssertTrue(result.isRawTextFallback)
     }
 
     func testParseWeeklyReviewResult_nullScore() throws {
@@ -136,5 +150,14 @@ final class AICoachParsingTests: XCTestCase {
         XCTAssertEqual(result.overallRating, "needs_work")
         XCTAssertEqual(result.feedback, rawText)
         XCTAssertTrue(result.keyPoints.isEmpty)
+        XCTAssertTrue(result.isRawTextFallback)
+    }
+
+    func testParseFormAnalysisResult_validJSON_notFallback() throws {
+        let json = """
+        {"overallRating":"excellent","feedback":"Perfect form","keyPoints":[]}
+        """
+        let result = try service.parseFormAnalysisResult(from: json)
+        XCTAssertFalse(result.isRawTextFallback)
     }
 }

@@ -94,6 +94,18 @@ extension Double {
         "\(kgToLbs.formattedOneDecimal) lbs"
     }
 
+    /// Returns weight formatted in the user's preferred unit system.
+    /// - Parameter useMetric: If true, displays in kg; otherwise converts to lbs.
+    func formattedWeight(useMetric: Bool) -> String {
+        useMetric ? "\(formattedOneDecimal) kg" : "\(kgToLbs.formattedOneDecimal) lbs"
+    }
+
+    /// Returns length formatted in the user's preferred unit system.
+    /// - Parameter useMetric: If true, displays in cm; otherwise converts to inches.
+    func formattedLength(useMetric: Bool) -> String {
+        useMetric ? "\(formattedOneDecimal) cm" : "\(cmToInches.formattedOneDecimal) in"
+    }
+
     var formattedPercentage: String {
         "\(formattedOneDecimal)%"
     }

@@ -9,6 +9,7 @@ struct ProgressTrackingView: View {
     @Query(sort: \BodyMeasurement.date, order: .reverse)
     private var measurements: [BodyMeasurement]
 
+    @AppStorage("useMetricUnits") private var useMetricUnits = true
     @State private var selectedSegment: ProgressSegment = .photos
     @State private var showingPhotoCapture = false
     @State private var selectedPhoto: ProgressPhoto?
@@ -202,9 +203,11 @@ struct ProgressTrackingView: View {
 
             TrendChartView(
                 title: "Weight",
-                data: weightTrendData,
+                data: useMetricUnits
+                    ? weightTrendData
+                    : weightTrendData.map { TrendDataPoint(date: $0.date, value: $0.value.kgToLbs) },
                 color: .purple,
-                unitLabel: "kg"
+                unitLabel: useMetricUnits ? "kg" : "lbs"
             )
 
             TrendChartView(
@@ -217,9 +220,11 @@ struct ProgressTrackingView: View {
             if !muscleMassTrendData.isEmpty {
                 TrendChartView(
                     title: "Muscle Mass",
-                    data: muscleMassTrendData,
+                    data: useMetricUnits
+                        ? muscleMassTrendData
+                        : muscleMassTrendData.map { TrendDataPoint(date: $0.date, value: $0.value.kgToLbs) },
                     color: .green,
-                    unitLabel: "kg"
+                    unitLabel: useMetricUnits ? "kg" : "lbs"
                 )
             }
 

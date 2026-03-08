@@ -288,22 +288,29 @@ struct WeeklyReviewView: View {
         ScrollView {
             VStack(spacing: 20) {
                 if let result = reviewResult {
-                    // Overall score
-                    if let score = result.overallScore {
-                        overallScoreGauge(score: score)
+                    if result.isRawTextFallback {
+                        // AI returned unstructured text — show as a single response card
+                        feedbackCard(title: "AI Response", icon: "brain", content: result.summary)
+                    } else {
+                        // Structured JSON response — show each section
+                        if let score = result.overallScore {
+                            overallScoreGauge(score: score)
+                        }
+
+                        feedbackCard(title: "Summary", icon: "doc.text.fill", content: result.summary)
+
+                        if !result.trainingFeedback.isEmpty {
+                            feedbackCard(title: "Training", icon: "dumbbell.fill", content: result.trainingFeedback)
+                        }
+
+                        if !result.nutritionFeedback.isEmpty {
+                            feedbackCard(title: "Nutrition", icon: "fork.knife", content: result.nutritionFeedback)
+                        }
+
+                        if !result.bodyCompFeedback.isEmpty {
+                            feedbackCard(title: "Body Composition", icon: "figure.stand", content: result.bodyCompFeedback)
+                        }
                     }
-
-                    // Summary
-                    feedbackCard(title: "Summary", icon: "doc.text.fill", content: result.summary)
-
-                    // Training
-                    feedbackCard(title: "Training", icon: "dumbbell.fill", content: result.trainingFeedback)
-
-                    // Nutrition
-                    feedbackCard(title: "Nutrition", icon: "fork.knife", content: result.nutritionFeedback)
-
-                    // Body Composition
-                    feedbackCard(title: "Body Composition", icon: "figure.stand", content: result.bodyCompFeedback)
 
                     // Recommendations
                     if !result.recommendations.isEmpty {

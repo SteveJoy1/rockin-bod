@@ -5,6 +5,8 @@ struct WorkoutDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var workouts: [WorkoutSession]
 
+    @AppStorage("useMetricUnits") private var useMetricUnits = true
+
     let workoutID: UUID
 
     init(workoutID: UUID) {
@@ -447,13 +449,15 @@ struct WorkoutDetailView: View {
     // MARK: - Helpers
 
     private func formattedWeight(_ weight: Double) -> String {
-        if weight >= 1000 {
-            return String(format: "%.0f", weight)
+        let displayWeight = useMetricUnits ? weight : weight.kgToLbs
+        let unit = useMetricUnits ? "kg" : "lbs"
+        if displayWeight >= 1000 {
+            return String(format: "%.0f %@", displayWeight, unit)
         }
-        if weight == weight.rounded() {
-            return String(format: "%.0f", weight)
+        if displayWeight == displayWeight.rounded() {
+            return String(format: "%.0f %@", displayWeight, unit)
         }
-        return String(format: "%.1f", weight)
+        return String(format: "%.1f %@", displayWeight, unit)
     }
 
     private func formattedDuration(_ seconds: Double) -> String {
