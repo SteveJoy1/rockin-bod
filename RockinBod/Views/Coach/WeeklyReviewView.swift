@@ -507,8 +507,12 @@ struct WeeklyReviewView: View {
         }
 
         modelContext.insert(report)
-        try? modelContext.save()
-        isSaved = true
+        do {
+            try modelContext.save()
+            isSaved = true
+        } catch {
+            errorMessage = "Failed to save report: \(error.localizedDescription)"
+        }
     }
 }
 

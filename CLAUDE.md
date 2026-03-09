@@ -84,17 +84,51 @@ RockinBod/
 - `RockinBod/Utilities/Secrets.example.swift` is committed as a template
 - Never commit `Secrets.swift` or any file matching `*.secret` / `.env`
 
+## Testing
+- **Test target:** `RockinBodTests/` with 70+ tests across 8 test files
+- **Run tests:** `xcodebuild test -scheme RockinBod -destination 'platform=iOS Simulator,name=iPhone 17 Pro'`
+- **Test files:**
+  - `AICoachParsingTests` — JSON parsing, code fence removal, fallback behavior
+  - `CronometerServiceTests` — CSV parsing, date parsing, value extraction
+  - `HevyServiceTests` — date parsing, workout type inference
+  - `DataAggregationServiceTests` — mock HealthKit, heart rate mocking
+  - `ScoreDisplayTests` — score gauge fraction and color mapping
+  - `UnitConversionTests` — kg/lbs, cm/inches, formatted display helpers
+  - `ModelTests` — SwiftData model creation and relationships
+  - `AICoachServiceTests` — service configuration
+
+### Testability
+- Private methods made `internal` for `@testable import`: `AICoachService.cleanJSONString`, `parseWeeklyReviewResult`, `parseFormAnalysisResult`, `parsePhotoAnalysisResult`; `CronometerService.parseCSVRows`, `parseDate`, `doubleValue`; `HevyService.inferWorkoutType`, `parseDate`
+- `HealthKitServiceProtocol` enables mock-based testing of `DataAggregationService`
+
 ## Known Issues & Incomplete Items
 - **Export Data:** `SettingsView.exportData()` is a stub (empty method body)
 - **Notifications:** `@AppStorage` toggles exist in Settings but no `UNUserNotificationCenter` scheduling code
 - **Cronometer API key:** `KeychainService.cronometerAPIKey` constant exists but is unused (Cronometer uses CSV + HealthKit only)
-- **Tests:** Only default Xcode test stub exists — no actual tests written
+- **RenphoService:** Methods retained for future direct Renpho API integration; currently reads via HealthKit only
+- **HealthKitService.saveBodyMass:** Available for future manual weight entry feature
 - **iPad:** `TARGETED_DEVICE_FAMILY: "1"` (iPhone only); iPad orientations added to Info.plist for App Store validation but not a target platform
+
+## Recently Fixed (Bug Audit)
+- [x] Nested NavigationStacks in all 5 tab child views (caused double navigation bars)
+- [x] Dashboard score gauge dividing by 100 instead of 10
+- [x] CSV parser \r\n handling (Swift grapheme cluster issue)
+- [x] Double `HealthKitService()` initialization in RockinBodApp
+- [x] Duplicate `saveAPIKeys()` call in OnboardingView
+- [x] Hevy workout UUID leaking into user-visible Notes field
+- [x] AI Coach always showing "Connected" regardless of API key
+- [x] Hevy integration status conflating HealthKit authorization
+- [x] Cronometer always showing "Not Connected" in settings
+- [x] Heart rate always nil for synced workouts
+- [x] Body fat percentage not passed to weekly review AI summary
+- [x] Metric/Imperial toggle having no effect on displayed values
+- [x] AI JSON parse fallback showing blank sections
+- [x] Silent error swallowing in PhotoCaptureView, CoachView, WeeklyReviewView
 
 ## Roadmap / Future Work
 - [ ] Implement actual notification scheduling (UNUserNotificationCenter)
 - [ ] Data export functionality (JSON/CSV export of all user data)
-- [ ] Write unit tests for services (especially AICoachService, DataAggregationService)
+- [ ] Progress photo analysis UI entry point (analyze button in photo detail)
 - [ ] Widget extension for daily summary on home screen
 - [ ] Watch companion for workout tracking
 - [ ] Push notifications via APNs for weekly review reminders

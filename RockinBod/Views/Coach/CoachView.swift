@@ -279,7 +279,11 @@ struct CoachView: View {
         // Save user message
         let userMessage = CoachMessage(role: .user, content: trimmedText)
         modelContext.insert(userMessage)
-        try? modelContext.save()
+        do {
+            try modelContext.save()
+        } catch {
+            errorMessage = "Failed to save message: \(error.localizedDescription)"
+        }
         messageText = ""
         scrollTarget = userMessage.id
 
@@ -307,7 +311,11 @@ struct CoachView: View {
                     contextSummary: context
                 )
                 modelContext.insert(assistantMessage)
-                try? modelContext.save()
+                do {
+                    try modelContext.save()
+                } catch {
+                    errorMessage = "Failed to save response: \(error.localizedDescription)"
+                }
                 scrollTarget = assistantMessage.id
             } catch {
                 errorMessage = error.localizedDescription

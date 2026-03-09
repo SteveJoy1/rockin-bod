@@ -11,6 +11,7 @@ struct PhotoCaptureView: View {
     @State private var selectedAngle: PhotoAngle = .front
     @State private var notes: String = ""
     @State private var isSaving = false
+    @State private var saveError: String?
 
     struct CapturedPhoto: Identifiable {
         let id = UUID()
@@ -58,6 +59,14 @@ struct PhotoCaptureView: View {
                 Task {
                     await loadSelectedPhotos(from: newItems)
                 }
+            }
+            .alert("Save Error", isPresented: .init(
+                get: { saveError != nil },
+                set: { if !$0 { saveError = nil } }
+            )) {
+                Button("OK", role: .cancel) { saveError = nil }
+            } message: {
+                Text(saveError ?? "Failed to save photos.")
             }
         }
     }
@@ -302,12 +311,12 @@ struct PhotoCaptureView: View {
 
         do {
             try modelContext.save()
+            isSaving = false
+            dismiss()
         } catch {
-            // Save error is not surfaced here since SwiftData auto-saves
+            isSaving = false
+            saveError = "Failed to save photos: \(error.localizedDescription)"
         }
-
-        isSaving = false
-        dismiss()
     }
 }
 
