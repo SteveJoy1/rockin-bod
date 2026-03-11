@@ -1,5 +1,14 @@
 # RockinBod - AI Fitness Coaching App
 
+## Session Startup
+
+**Before starting any work, run:**
+```bash
+git fetch origin && git status
+```
+If the local branch is behind origin/main, run `git pull --rebase` to sync.
+Alert the user if there are merge conflicts.
+
 ## Overview
 RockinBod is an iOS fitness app that combines workout tracking, nutrition monitoring, body composition progress, and AI-powered coaching via the Anthropic Claude API. It integrates with Apple Health, Hevy, Cronometer, and Renpho.
 
